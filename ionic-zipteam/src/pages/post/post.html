@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Public Posts</ion-title>
+    <!-- <ion-item>
+      <ion-label>Show Good Posts</ion-label>
+    <ion-checkbox [(ngModel)]="anonposts" (click)="changeList()"></ion-checkbox>
+    </ion-item> -->
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()" color="primary">
+        <ion-icon name="add-circle"></ion-icon>
+        <ion-icon name="list"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let post of posts">
+      <ion-item (click)="openModal({id: post.id})">
+        <ion-avatar item-left>
+          <img src="{{post.giphyUrl}}">
+        </ion-avatar>
+        <h3>{{post.userid}} says:</h3>
+        <p><em>{{post.text}}</em></p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="remove(post)">
+          <ion-icon name="trash"></ion-icon> Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
